@@ -1,6 +1,6 @@
 # Custom-exporter Project
 
-This project creates an HTTP Server as systemd service that listens on a specified port and gathers/serves the metrics 
+This project creates an HTTP Server as docker container that listens on a specified port and gathers/serves the metrics 
 
 **Execute installation with docker-compose**
 ```sh
