@@ -6,6 +6,6 @@ This project creates an HTTP Server as systemd service that listens on a specifi
 ```sh
 
 pip3 install git+https://github.com/kloia/prometheus-custom-exporter
-cd ansible
+cd example/ansible
 ansible-playbook -i hosts.ini application_exporters.yaml
 ```

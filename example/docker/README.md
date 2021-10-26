@@ -5,6 +5,6 @@ This project creates an HTTP Server as docker container that listens on a specif
 **Execute installation with docker-compose**
 ```sh
 git clone https://github.com/kloia/prometheus-custom-exporter
-cd prometheus-custom-exporter/example/docker
+cd example/docker
 docker-compose up --build
 ```
