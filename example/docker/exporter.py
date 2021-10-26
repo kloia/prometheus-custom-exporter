@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from kloia_exporter import API, MetricInput, Metric
-import os
 
 metric_inputs = [
     MetricInput(
@@ -16,4 +15,4 @@ metric_inputs = [
     )
 ]
 
-API(int(os.environ.get('PORT')), metric_inputs=metric_inputs).listen()
+API(9000, metric_inputs=metric_inputs).listen()

@@ -1,0 +1,10 @@
+version: '3'
+
+services: 
+    custom-exporter:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        image: kloia/custom-exporter:0.1
+        ports: 
+            - '9000:9000'
