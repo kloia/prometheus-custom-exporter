@@ -1,0 +1,11 @@
+[Unit]
+Description=Metric Exporter Service
+[Install]
+WantedBy=multi-user.target
+[Service]
+User=monitoring
+Group=monitoring
+WorkingDirectory=/opt/custom-exporter/
+ExecStart=python3 /opt/custom-exporter/exporter.py
+Restart=always
+

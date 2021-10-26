@@ -1,0 +1,56 @@
+---
+- name: Create monitoring user
+  user:
+    name: monitoring
+
+- name: Clean exporter directory
+  file:
+    state: absent
+    path: "{{ path }}"
+  when: clean_install
+
+- name: Create exporter directory
+  file:
+    state: directory
+    owner: monitoring
+    group: monitoring
+    path: "{{ path }}/"
+    mode: 0750
+
+- name: Upload Exporter Lib Files
+  copy:
+    src: lib/
+    dest: "{{ path }}/"
+    mode: 0644
+    directory_mode: "0755"
+    owner: monitoring
+    group: monitoring
+  notify: "Restart custom-exporter"
+
+- name: Upload Exporter Systemd Files
+  copy:
+    src: systemd_files/custom-exporter.service
+    dest: /usr/lib/systemd/system/custom-exporter.service
+    mode: 0644
+    owner: monitoring
+    group: monitoring
+  notify: "Restart custom-exporter"
+
+- name: Enable Exporter Systemd
+  systemd:
+    name: custom-exporter
+    daemon_reload: true
+    state: started
+    enabled: true
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Get services status
+  ansible.builtin.service_facts:
+
+- name: Check if custom-exporter is running
+  ansible.builtin.assert:
+    quiet: true
+    that: ansible_facts.services['custom-exporter.service']['state'] == 'running'
+    fail_msg: custom-exporter.service is not running

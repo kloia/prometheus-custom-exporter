@@ -1,0 +1,7 @@
+---
+- name: "Restart custom-exporter"
+  systemd:
+    name: custom-exporter
+    daemon_reload: true
+    state: restarted
+    enabled: true

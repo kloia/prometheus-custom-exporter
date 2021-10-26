@@ -1,0 +1,6 @@
+---
+
+- hosts: exporter
+  become: true
+  roles:
+    - test_exporter
