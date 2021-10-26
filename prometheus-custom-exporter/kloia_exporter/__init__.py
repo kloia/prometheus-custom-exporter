@@ -19,7 +19,7 @@ kloia_exporter.__doc__ = """
 
     Packages:
         - API
-        - AdeyaCollector
+        - Collector
         - File
         - Service
         - MetricService

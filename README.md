@@ -14,3 +14,6 @@ exporters which is target for Prometheus
 ```
 pip3 install git+https://github.com/kloia/prometheus-custom-exporter
 ```
+
+<img src="./docs/img/module.png" width="850px"></img>
+<img src="./docs/img/usage.png" width="600px"></img>
