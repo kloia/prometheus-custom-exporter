@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from shared import API, MetricInput, Metric
+from kloia_exporter import API, MetricInput, Metric
 
 metric_inputs = [
     MetricInput(

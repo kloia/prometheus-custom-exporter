@@ -12,5 +12,5 @@ exporters which is target for Prometheus
 
 ## Usage
 ```
-pip3 install git+https://github.com/muhammedsaidkaya/prometheus-custom-exporter
+pip3 install git+https://github.com/kloia/prometheus-custom-exporter
 ```
