@@ -2,7 +2,6 @@ import kloia_exporter.config as config
 from kloia_exporter.collector import Collector, API
 from kloia_exporter.metricService import MetricService, File
 from kloia_exporter.service import Service
-from kloia_exporter.metricInput import MetricInput, Metric
 
 import kloia_exporter
 
@@ -23,7 +22,5 @@ kloia_exporter.__doc__ = """
         - File
         - Service
         - MetricService
-        - MetricInput
-        - Metric
         - config
 """

@@ -7,3 +7,9 @@ Developers need to run this command on their host.
 ```
 pre-commit install
 ```
+
+## Test
+
+```
+python3 -m unittest discover -s $(pwd) -v -f -p "test_*.py"
+```

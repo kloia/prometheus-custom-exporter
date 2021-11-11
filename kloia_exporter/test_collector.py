@@ -1,15 +1,14 @@
 from unittest import mock, TestCase
-from kloia_exporter.metricInput import MetricInput, Metric
 from kloia_exporter.collector import Collector
 
 dummy_data = {
     "metric_inputs": [
-        MetricInput(
-            metricName="metricName",
-            helpText="helpText",
-            labels=["labelKey"],
-            metrics=[Metric(["labelValue"], 10)]
-        )
+        {
+            "metricName": "metricName",
+            "helpText": "helpText",
+            "labels": ["labelKey"],
+            "collect": lambda metricFamily: metricFamily.add_metric( ["labelValue"], 10 )
+        }
     ]
 }
 

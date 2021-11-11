@@ -1,18 +1,13 @@
 #!/usr/bin/env python
-from kloia_exporter import API, MetricInput, Metric
+from kloia_exporter import API
 
 metric_inputs = [
-    MetricInput(
-        metricName="metricName",
-        helpText="helpText",
-        labels=["labelsKey"],
-        metrics=[
-            Metric(
-                labelValues=["labelValue"],
-                value=10
-            )
-        ]
-    )
+    {
+        "metricName": "metricName",
+        "helpText": "helpText",
+        "labels": ["labelKey"],
+        "collect": lambda metricFamily: metricFamily.add_metric( ["labelValue"], 10 )
+    }
 ]
 
 API(9000, metric_inputs=metric_inputs).listen()

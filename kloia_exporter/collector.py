@@ -1,5 +1,5 @@
 import time
-from prometheus_client.core import REGISTRY
+from prometheus_client.core import REGISTRY, GaugeMetricFamily
 from prometheus_client import start_http_server
 
 
@@ -14,14 +14,12 @@ class API():
 
             Usage Example:
                 metric_inputs = [
-                    MetricInput(
-                        metricName="metricName",
-                        helpText="helpText",
-                        labels=["labelKey"],
-                        metrics=[
-                            Metric(labelValues=["labelValue"], value=10)
-                        ]
-                    )
+                    {
+                        "metricName": "metricName",
+                        "helpText": "helpText",
+                        "labels": ["labelKey"],
+                        "collect": lambda metricFamily: metricFamily.add_metric( ["labelValue"], 0 )
+                    }
                ]
                 API(8080, metric_inputs).listen()
 
@@ -51,15 +49,12 @@ class Collector(object):
 
             Usage Example:
                 metric_inputs = [
-                    MetricInput(
-                        metricName="metricName",
-                        helpText="helpText",
-                        labels=["labelKey"],
-                        metrics=[
-                            Metric(labelValues=["labelValue"], value=10)
-                        ]
-                    )
-
+                    {
+                        "metricName": "metricName",
+                        "helpText": "helpText",
+                        "labels": ["labelKey"],
+                        "collect": lambda metricFamily: metricFamily.add_metric( ["labelValue"], 0 )
+                    }
                ]
                 Collector(metric_inputs)
 
@@ -73,4 +68,6 @@ class Collector(object):
 
     def collect(self):
         for metric_input in self.metric_inputs:
-            yield metric_input.get_metric()
+            metricFamily = GaugeMetricFamily(metric_input["metricName"], metric_input["helpText"], labels=metric_input["labels"])
+            metric_input["collect"](metricFamily)
+            yield metricFamily
