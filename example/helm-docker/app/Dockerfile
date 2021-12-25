@@ -1,4 +1,4 @@
-FROM kloiadocker/prometheus-custom-exporter:latest
+FROM uzumlukek/prometheus-custom-exporter:latest
 
 WORKDIR /app
 
