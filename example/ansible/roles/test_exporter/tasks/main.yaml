@@ -17,6 +17,10 @@
     path: "{{ path }}/"
     mode: 0750
 
+- name: Install kloia_exporter package
+  pip:
+    name: git+https://github.com/kloia/prometheus-custom-exporter
+
 - name: Upload Exporter Lib Files
   copy:
     src: lib/
