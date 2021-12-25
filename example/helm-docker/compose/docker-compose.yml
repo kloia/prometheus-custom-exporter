@@ -3,7 +3,7 @@ version: '3'
 services: 
     custom-exporter:
         build: 
-            context: .
+            context: ../app/
             dockerfile: Dockerfile
         image: kloia/custom-exporter:0.1
         ports: 
