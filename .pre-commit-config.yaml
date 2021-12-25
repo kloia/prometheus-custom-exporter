@@ -3,3 +3,11 @@ repos:
   rev: ''
   hooks:
   - id: flake8
+- repo: local
+  hooks:
+    - id: unit-test
+      name: shared-module-unit-test
+      entry: python3 -m unittest discover -s . -v -f -p "test_*.py"
+      language: system
+      always_run: true
+      pass_filenames: false
