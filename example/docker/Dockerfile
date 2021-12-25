@@ -1,9 +1,7 @@
-FROM python:3.6
-
-RUN /usr/local/bin/python -m pip install git+https://github.com/kloia/prometheus-custom-exporter
+FROM uzumlukek/prometheus-custom-exporter:latest
 
 WORKDIR /app
 
 COPY . .
 
-ENTRYPOINT [ "python3", "/app/exporter.py" ]
+CMD [ "/app/exporter.py" ]
